@@ -1,46 +1,74 @@
-# Getting Started with Create React App
+# Visión General del proyecto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El presente proyecto nace de la necesidad presentada en la prueba técnica, \
+para la vacante como Desarrollador Frontend Sr de la empresa [Seguritech](https://seguritech.com). \
 
-## Available Scripts
+Se utilizo la herramienta de inicialización de proyectos create-react-app (https://github.com/facebook/create-react-app). \
+para el arquetipo inicial.
 
-In the project directory, you can run:
+## Comando ejecutado para creación del proyecto
+
+`npx create-react-app prueba-movies --template typescript`
+
+Incluye herramientas como manejadores de estado con React Redux Toolkit, hojas de estilo con SCSS. \
+Componentes y elementos de HTML en combinación con Bootstrap y MUI \
+
+Adicionalmente se desarrollando con el lenguaje de TS por las ventajas y bondades que \
+permite mantener un mejor control de los tipados de datos, añadiendo \
+una capa extra de seguridad para el control de objetos json, props, response de servicios, creación de objetos \
+con estados inciales, etc. Aunque en el proyecto no se tiene implementado algun componente con props\
+para compartir propiedades de un componente padre a un hijo y algunas otras cosas más mencionadas con \
+anterioridad, pero es una buena practica implementarlo.
+
+El cliente HTTP seleccionado es Axios. ¿Pór que lo elegí? Simplemente por que me gusta mucho esta libreria, \
+adicional proporciona algunas ventajas en comparación con Fetch como son: \
+
+- Interceptores.
+- Cancelación de solicitudes.
+- Manejo de errores.
+
+Redux se implemento con Toolkit simplificando su implementación. \
+Decidi utilizar el manejo de estados para controlar el acceso de la aplicación mediante un login. \
+
+# Sistema de inicio de Sesión
+
+El inicio de sesión se implemento con autenticación [firebase](https://firebase.google.com/?hl=es-419). \
+Es una autenticación sencilla habilitada simplemente para ingresar con usuario y contraseña. \
+Tratandose de una empresa que en su nombre lleva "Seguri", \
+entonces se me hizo un plus agregarle una autenticación más apegada a los proyectos reales. \
+
+La credencial de acceso son las siguientes:
+
+    - email: user_movies@prueba.com
+    - pass: UsMov1es@
+
+Cabe destacar que el proyecto de Firebase se dara de baja una vez que se avance o decline el proceso de reclutamiento, por lo que las credenciales y valores del proyecto firebase seran obsoletas.
+
+# Librerias
+
+El proyecto se construyo en el presente dia 12 de Marzo de 2025 por lo que las versiones tanto de node como de React lts son las siguientes: \
+
+NodeJs: 22.14.0
+ReactJs: 19.0.0
+
+Por lo que son las minimo recomendadas para instalar dependencias e inicializar el proyecto.
+El manejador de paquetes seleccionado es NPM simplemente por que me resulta comodo, \
+facil y es con el que más experiencia tengo.
+
+## Instalación de dependencias e inicializar el servidor local
+
+### `npm i` o `npm install`
+
+La instalación de dependencias se hace se ejecutando el comando npm i, este comando se ejecuta una vez \
+que te encuentres dentro de la carpeta raiz del proyecto.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Al finalizar la instalación de dependencias el siguiente paso es levantar el servidor local con npm start. \
+Una vez que levante en el puerto 3000 del localhost, se visualizara el proyecto corriendo.\
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Si desean tener mayor información sobre React o la libreria que se utilizo para el arquetipo original
 
-### `npm test`
+Puedes aprender más de [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Puedes aprender mas en [React documentation](https://reactjs.org/).
