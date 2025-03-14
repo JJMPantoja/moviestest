@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
  */
 import { ReactNode } from "react";
 
-const Contenedor = ({ children }: { children: ReactNode }) => {
+const ContainerMain = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 1 }}>
@@ -15,7 +15,7 @@ const Contenedor = ({ children }: { children: ReactNode }) => {
           boxShadow={3}
           sx={{
             borderRadius: "0.4rem",
-            height: "fit-content",
+            minHeight: "75vh",
             backgroundColor: "#fff",
             overflow: "hidden",
           }}
@@ -26,4 +26,4 @@ const Contenedor = ({ children }: { children: ReactNode }) => {
     </>
   );
 };
-export default Contenedor;
+export default ContainerMain;

@@ -4,8 +4,8 @@ import { HomeView } from "../Views/Private/Home/HomeView";
 import { Header } from "../Components/HeaderComponent";
 import { Footer } from "../Components/FooterComponent";
 import { MoviesSeriesView } from "../Views/Private/Views/MoviesSeriesView";
-import Contenedor from "../Components/Shared/ContenedorMain/ContenedorMain";
 import { Typography } from "@mui/material";
+import ContainerMain from "../Components/Shared/ContenedorMain/ContainerMain";
 
 export const ProtectedRoutes = () => {
   const params = useParams();
@@ -16,28 +16,25 @@ export const ProtectedRoutes = () => {
     textAlign: "center" as "center",
     padding: "0.5rem",
     marginTop: "4rem",
-  };
-
-  const capitalizeFirstLetter = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    display: "flex",
   };
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Header />
-      <Typography variant="h4" className="classTitle" style={style}>
-        {params["*"] && params["*"] !== ""
-          ? capitalizeFirstLetter(params["*"])
-          : "Clasificaciones"}{" "}
-        más populares
+      <Typography variant="h4" className="d-flex classTitle" style={style}>
+        <div className="text-capitalize" style={{ width: "fit-content" }}>
+          {params["*"] && params["*"] !== "" ? params["*"] : "Clasificaciones"}{" "}
+        </div>
+        &nbsp;más populares
       </Typography>
-      <Contenedor>
+      <ContainerMain>
         <Routes>
           <Route path="" Component={HomeView} />
           <Route path="/*" Component={HomeView} />
           <Route path="/:clasificacion" Component={MoviesSeriesView} />
         </Routes>
-      </Contenedor>
+      </ContainerMain>
       <Footer />
     </div>
   );
