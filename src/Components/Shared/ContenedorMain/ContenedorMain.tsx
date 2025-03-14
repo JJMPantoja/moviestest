@@ -15,7 +15,7 @@ const Contenedor = ({ children }: { children: ReactNode }) => {
           boxShadow={3}
           sx={{
             borderRadius: "0.4rem",
-            minHeight: "88vh",
+            height: "fit-content",
             backgroundColor: "#fff",
             overflow: "hidden",
           }}

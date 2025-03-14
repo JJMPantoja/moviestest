@@ -174,20 +174,6 @@ export const MoviesSeriesView = () => {
         {showCards()}
       </Box>
 
-      {/* <Box
-        component={"section"}
-        className="w-100 d-flex justify-content-center"
-      >
-        <Pagination
-          count={count}
-          defaultPage={1}
-          onChange={() => {
-            setIniReg(iniReg + Number(regPag));
-            showCards(iniReg + Number(regPag), iniReg + 2 * Number(regPag));
-          }}
-        />
-      </Box> */}
-
       <Modal open={open} onClose={handleClose}>
         <ModalComponent data={filmSelected} handleClose={handleClose} />
       </Modal>

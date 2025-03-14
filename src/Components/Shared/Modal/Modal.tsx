@@ -34,7 +34,7 @@ export const ModalComponent = ({
           {data?.title}
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <Card sx={{ maxWidth: 345, height: 400 }}>
+          <Card sx={{ maxWidth: 345, height: "fit-content" }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -50,8 +50,6 @@ export const ModalComponent = ({
                   variant="body2"
                   sx={{
                     color: "text.secondary",
-                    overflow: "scroll",
-                    maxHeight: "10rem",
                   }}
                 >
                   <Typography gutterBottom variant="subtitle1" component="div">
