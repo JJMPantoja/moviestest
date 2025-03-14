@@ -25,7 +25,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Cerrar sesión"];
+const navItems = ["Inicio", "Cerrar sesión"];
 
 export const Header = (props: Props) => {
   const { window } = props;
@@ -49,24 +49,33 @@ export const Header = (props: Props) => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleAction = () => {
+  const handleAction = (action: string) => {
     setLoading(true);
-    signOut(auth)
-      .then(() => {
-        setLoading(false);
-        navigate("/auth/login");
-        Toast.fire({
-          icon: "success",
-          title: "Sesión finalizada correctamente",
+    if (action.toLocaleLowerCase().trim().includes("cerrar")) {
+      signOut(auth)
+        .then(() => {
+          setLoading(false);
+          navigate("/auth/login");
+          Toast.fire({
+            icon: "success",
+            title: "Sesión finalizada correctamente",
+          });
+        })
+        .catch((error) => {
+          Toast.fire({
+            icon: "error",
+            title:
+              "Se tienen inconvenientes para cerrar sesión favor de intentarlo más tarde",
+          });
         });
-      })
-      .catch((error) => {
-        Toast.fire({
-          icon: "error",
-          title:
-            "Se tienen inconvenientes para cerrar sesión favor de intentarlo más tarde",
-        });
-      });
+    } else {
+      switch (action.toLocaleLowerCase().trim()) {
+        case "inicio":
+          setLoading(false);
+          navigate("/home");
+          break;
+      }
+    }
   };
 
   const drawer = (
@@ -79,7 +88,7 @@ export const Header = (props: Props) => {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item} onClick={() => handleAction(item)}>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item} />
             </ListItemButton>
@@ -125,7 +134,7 @@ export const Header = (props: Props) => {
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
                 <Button
-                  onClick={handleAction}
+                  onClick={() => handleAction(item)}
                   key={item}
                   sx={{ color: "#fff" }}
                 >

@@ -4,11 +4,19 @@ import { MoviesArrT } from "../../../Interfaces/moviesType";
 import LoadingComponent from "../../../Components/Shared/Loading/LoadingComponent";
 import { useParams } from "react-router-dom";
 import CardMovieComponent from "../../../Components/Shared/Card/CardMovieComponent";
-import { Box, Pagination, Select, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Pagination,
+  Select,
+  Typography,
+} from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import { SelectChangeEvent } from "@mui/material/Select";
+import { ModalComponent } from "../../../Components/Shared/Modal/Modal";
 
 export const MoviesSeriesView = () => {
   const [movies, setMovies] = useState<MoviesArrT[] | null>(null);
@@ -17,6 +25,13 @@ export const MoviesSeriesView = () => {
   const [yearFilter, setYearFilter] = useState("Todos");
   const [iniReg] = useState(0);
   const [allYears, setAllYears] = useState<number[] | null>(null);
+  const [filmSelected, setFilmSelected] = useState<MoviesArrT | null>(null);
+  const [open, setOpen] = useState(false);
+  const handleOpen = (movie: MoviesArrT) => {
+    setFilmSelected(movie);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   const fetchMovies = async () => {
     try {
@@ -54,7 +69,11 @@ export const MoviesSeriesView = () => {
           ?.filter((movie: MoviesArrT) => movie.releaseYear >= 2010)
           .slice(initalValue ?? iniReg, lastValue ?? Number(regPag))
           .map((movie: MoviesArrT, index: number) => (
-            <CardMovieComponent key={index} film={movie} />
+            <CardMovieComponent
+              key={index}
+              film={movie}
+              callback={() => handleOpen(movie)}
+            />
           ))}
       </>
     );
@@ -168,6 +187,10 @@ export const MoviesSeriesView = () => {
           }}
         />
       </Box> */}
+
+      <Modal open={open} onClose={handleClose}>
+        <ModalComponent data={filmSelected} handleClose={handleClose} />
+      </Modal>
     </>
   );
 };
