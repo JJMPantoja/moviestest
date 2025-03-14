@@ -1,17 +1,14 @@
-import React from "react";
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AuthRoutes from "./AuthRoutes";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 
 export const PublicRoutes = () => {
   return (
     <Routes>
-      <Routes>
-        <Route path="" element={<Navigate to="/auth/login" />} />
-        <Route path="**" element={<Navigate to="/auth/login" />} />
-        <Route path="/*" element={<Navigate to="/auth/login" />} />
-        <Route path="/auth/*" element={<AuthRoutes />} />
-      </Routes>
-      {/* <Route path="/" Component={MoviesView} /> */}
+      <Route path="" element={<Navigate to="/auth/login" />} />
+      <Route path="/*" element={<Navigate to="/auth/login" />} />
+      <Route path="/auth/*" element={<AuthRoutes />} />
+      <Route path="/home/*" element={<ProtectedRoutes />} />
     </Routes>
   );
 };

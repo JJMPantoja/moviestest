@@ -1,13 +1,85 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+// General styles Cards
+
+.containerCard {
+  display: flex;
+  grid-template-columns: repeat(1fr);
+  gap: 1rem;
+  padding: 1rem;
+  padding: 2rem 5rem;
+}
+
+.cardComponent {
+  min-width: 150px !important;
+  min-height: 200px !important;
+  max-width: 150px !important;
+  max-height: 200px !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  background-color: #000 !important;
+  background-repeat: no-repeat !important;
+  background-position-x: center !important;
+  color: #fff !important;
+  display: grid !important;
+  place-content: center !important;
+  position: relative;
+
+  .imgCardClasification {
+    width: 75px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+  }
+
+  &:hover {
+    border: 2px solid #fff !important;
+    -webkit-box-shadow: 1px 1px 29px -5px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 1px 1px 29px -5px rgba(0, 0, 0, 1);
+    box-shadow: 1px 1px 29px -5px rgba(0, 0, 0, 1);
+    transform: scale(0.96);
+    transition: all 0.3s ease;
+  }
+}
+
+.imgCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+}
+
+.titleCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 2rem !important;
+  font-weight: bold;
+}
+
+@media screen and (width <= 768px) {
+  .containerCard {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+  }
 }

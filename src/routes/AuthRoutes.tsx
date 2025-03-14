@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import LoginPage from "../Views/auth/Views/LoginPage";
+import LoginPage from "../Views/auth/LoginPage";
 
 export default function AuthRoutes() {
   return (
